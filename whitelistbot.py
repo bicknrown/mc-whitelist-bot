@@ -26,7 +26,7 @@ async def whitelist(ctx,ingamename: str):
     if valid == None:
         await ctx.send("Invalid Username!")
     else:
-        subprocess.run(["screen", "-S", "mc", "-X","eval", 'stuff "whitelist add {0}"'.format(ingamename)])
+        subprocess.run(["screen", "-S", "mc", "-X","eval", 'stuff "whitelist add {0}\015"'.format(ingamename)])
         await ctx.send("You have been added to the whitelist!")
 
 bot.start()
