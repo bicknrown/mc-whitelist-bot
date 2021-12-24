@@ -40,18 +40,14 @@ async def on_ready():
 @bot.command(description=WHITELISTDESCRIPTION)
 async def whitelist(ctx, ign: str):
     reMatch = re.match(mcNameReMatch,ign)
-    match reMatch:
-        case None:
-            ctx.respond(invalidMcName)
-        case _:
-            client = Client(HOST,PORT,PASSWORD)
-            await client.connect()
-            response = await client.send_cmd(whitelistCommand + ign)
-            await client.close()
-            print(response)
-            ctx.respond(success)
-
-
-
+    if reMatch != None:
+        client = Client(HOST,PORT,PASSWORD)
+        await client.connect()
+        response = await client.send_cmd(whitelistCommand + ign)
+        await client.close()
+        print(response)
+        ctx.respond(success)
+    else:
+        ctx.respond(invalidMcName)
 
 bot.run(TOKEN)
