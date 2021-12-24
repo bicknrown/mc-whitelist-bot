@@ -42,8 +42,8 @@ async def whitelist(ctx, ign: str):
         await client.connect()
         response = await client.send_cmd(whitelistCommand + ign)
         await client.close()
-        ctx.send(response[0])
+        await ctx.send(response[0])
     else:
-        ctx.send(invalidMcName)
+        await ctx.send(invalidMcName)
 
 bot.run(TOKEN)
