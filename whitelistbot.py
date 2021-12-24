@@ -22,10 +22,7 @@ PASSWORD = config.get("Minecraft", "PASSWORD", fallback="password")
 
 # Internal config.
 mcNameReMatch = r"^\w{3,16}$"
-success = "You have been added to the whitelist!"
 invalidMcName = "Invalid Username!"
-nameAlreadyAdded = "This username has already been added!"
-nameDNE = "This Username does not exist!"
 whitelistCommand = "whitelist add "
 
 botIntents = discord.Intents.default()
@@ -45,9 +42,8 @@ async def whitelist(ctx, ign: str):
         await client.connect()
         response = await client.send_cmd(whitelistCommand + ign)
         await client.close()
-        print(response)
-        ctx.respond(success)
+        ctx.send(response[0])
     else:
-        ctx.respond(invalidMcName)
+        ctx.send(invalidMcName)
 
 bot.run(TOKEN)
