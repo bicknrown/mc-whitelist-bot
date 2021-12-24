@@ -1,3 +1,4 @@
+import asyncio
 import re
 import os
 import configparser
@@ -25,6 +26,8 @@ mcNameReMatch = r"^\w{3,16}$"
 invalidMcName = "Invalid Username!"
 whitelistCommand = "whitelist add "
 
+lock = asyncio.Lock()
+
 botIntents = discord.Intents.default()
 botIntents.members = True
 
@@ -40,9 +43,11 @@ async def whitelist(ctx, ign: str):
     if reMatch != None:
         client = Client(HOST,PORT,PASSWORD)
         await client.connect()
-        response = await client.send_cmd(whitelistCommand + ign)
+        async with lock:
+            response = await client.send_cmd(whitelistCommand + ign)
         await client.close()
-        await ctx.send(response[0])
+        async with lock:
+            await ctx.send(response[0])
     else:
         await ctx.send(invalidMcName)
 
