@@ -12,8 +12,8 @@ config.read('config.ini')
 # Discord config section.
 TOKEN = config.get("Discord", "TOKEN", fallback="No token found!")
 BOTPREFIX = config.get("Discord", "COMMAND_PREFIX", fallback="*")
-BOTDESCRIPTION = config.get("Discord", "BOT_DESCTIPTION", fallback="A bot to whitelist your Minecraft in-game name!")
-WHITELISTDESCRIPTION = config.get("Discord", "WHITELIST_DESCTIPTION", fallback="A command to whitelist your Minecraft in-game name!")
+BOTDESCRIPTION = config.get("Discord", "BOT_DESCRIPTION", fallback="A bot to whitelist your Minecraft in-game name!")
+WHITELISTDESCRIPTION = config.get("Discord", "WHITELIST_DESCRIPTION", fallback="A command to whitelist your Minecraft in-game name!")
 
 # Remote minecraft config section.
 

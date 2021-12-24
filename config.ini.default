@@ -1,0 +1,22 @@
+[Discord]
+# Discord bot token.
+TOKEN=CHANGEME
+
+# Bot command prefix, defaults to '*'.
+#COMMAND_PREFIX=
+
+# Description for the bot, shown on discord, defaults to "A bot to whitelist your Minecraft in-game name!".
+#BOT_DESCRIPTION=
+
+# Description for the whitelist command, defaults to "A command to whitelist your Minecraft in-game name!".
+#WHITELIST_DESCRIPTION=
+
+[Minecraft]
+# Minecraft server host, defaults to `127.0.0.1`.
+#HOST=
+
+# Minecraft RCON port, defaults to `25575`.
+#PORT=
+
+# Minecraft server RCON password.
+PASSWORD=CHANGEME
