@@ -17,7 +17,7 @@ WHITELISTDESCRIPTION = config.get("Discord", "WHITELIST_DESCTIPTION", fallback="
 # Remote minecraft config section.
 
 HOST = config.get("Minecraft", "HOST", fallback="127.0.0.1")
-PORT = int(config.get("Minecraft", "PORT", fallback="25566"))
+PORT = int(config.get("Minecraft", "PORT", fallback="25575"))
 PASSWORD = config.get("Minecraft", "PASSWORD", fallback="password")
 
 # Internal config.
