@@ -12,7 +12,7 @@ There are many limitations, including but not limited to:
 
 ## setup
 This project is a wrapper for using the Minecraft RCON protocol;
-Due to many factors, I settled on using [py-cord](https://github.com/Pycord-Development/pycord) and [Aio-MC-RCON](https://github.com/Iapetus-11/aio-mc-rcon) to accomplish this task.
+Due to many factors, I settled on using [disnake](https://github.com/DisnakeDev/disnake) and [Aio-MC-RCON](https://github.com/Iapetus-11/aio-mc-rcon) to accomplish this task.
 
 ### configuration
 This bot expects at bare minimum, a configuration file, named `config.ini`, in the same directory as the bot script, containing *AT LEAST*:
