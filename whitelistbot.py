@@ -1,17 +1,19 @@
 import asyncio
 import re
-import os
 import configparser
-import discord
-from discord.ext import commands
+
+from disnake.ext import commands
 from aiomcrcon import Client
+
+# Mutex for locking shared resource calls
+lock = asyncio.Lock()
 
 config = configparser.ConfigParser()
 config.read('config.ini')
 
 # Discord config section.
 TOKEN = config.get("Discord", "TOKEN", fallback="No token found!")
-BOTPREFIX = config.get("Discord", "COMMAND_PREFIX", fallback="*")
+BOTPREFIX = config.get("Discord", "COMMAND_PREFIX", fallback="?")
 BOTDESCRIPTION = config.get("Discord", "BOT_DESCRIPTION", fallback="A bot to whitelist your Minecraft in-game name!")
 WHITELISTDESCRIPTION = config.get("Discord", "WHITELIST_DESCRIPTION", fallback="A command to whitelist your Minecraft in-game name!")
 
@@ -26,18 +28,13 @@ mcNameReMatch = r"^\w{3,16}$"
 invalidMcName = "Invalid Username!"
 whitelistCommand = "whitelist add "
 
-lock = asyncio.Lock()
-
-botIntents = discord.Intents.default()
-botIntents.members = True
-
-bot = commands.Bot(command_prefix=BOTPREFIX, description=BOTDESCRIPTION, intents=botIntents)
+bot = commands.Bot(command_prefix=BOTPREFIX, description=BOTDESCRIPTION)
 
 @bot.event
 async def on_ready():
     print("logged in!")
 
-@bot.command(description=WHITELISTDESCRIPTION)
+@bot.slash_command(description=WHITELISTDESCRIPTION)
 async def whitelist(ctx, ign: str):
     reMatch = re.match(mcNameReMatch,ign)
     if reMatch != None:
