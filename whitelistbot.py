@@ -33,6 +33,7 @@ bot = commands.Bot(command_prefix=BOTPREFIX, description=BOTDESCRIPTION)
 @bot.event
 async def on_ready():
     print("logged in!")
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="for /whitelist"))
 
 @bot.slash_command(description=WHITELISTDESCRIPTION)
 async def whitelist(ctx, ign: str):
